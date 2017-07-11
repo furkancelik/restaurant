@@ -18,8 +18,8 @@ class CreateConfigsTable extends Migration
             $table->string('menu_title');
             $table->string('menu_phone');
 
-            $table->text('about');
-            $table->text('chef');
+            $table->text('about_page');
+            $table->text('chef_page');
             $table->text('address');
             $table->text('reservation_phone');
             $table->text('working_hours');

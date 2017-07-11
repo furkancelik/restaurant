@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin'],function(){
 
   Route::get('/index',['as'=>'admin.index','uses' =>function () {
       return view('backend/index/index');
-      // return view('welcome');
   }]);
+  Route::resource('/config', 'Admin\ConfigController');
+  // Route::get('/config', ['as' => 'admin.config', 'uses' => 'Admin\ConfigController']);
 });
