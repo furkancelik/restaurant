@@ -64,6 +64,10 @@
                           <a href="{{ route('admin.menu-detail.index') }}"><i class="fa fa-file-o fa-fw"></i> Menü Detayları</a>
                       </li>
 
+                      <li>
+                          <a href="{{ route('admin.our-special.index') }}"><i class="fa fa-cutlery fa-fw"></i> Özel Spesiyaller</a>
+                      </li>
+
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>

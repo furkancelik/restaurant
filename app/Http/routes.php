@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin'],function(){
   Route::resource('/config', 'Admin\ConfigController');
   Route::resource('/menu-category', 'Admin\MenuCategoryController');
   Route::resource('/menu-detail', 'Admin\MenuDetailController');
+  Route::resource('/our-special', 'Admin\OurSpecialController');
 
 
   // Route::get('/config', ['as' => 'admin.config', 'uses' => 'Admin\ConfigController']);
