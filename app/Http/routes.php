@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend/index');
-    // return view('welcome');
-});
+Route::get('/',['as'=>'home','uses'=>'HomeController@index']);
+Route::post('/siparis-ver',['as'=>'home','uses'=>'HomeController@order']);
 
 Route::group(['prefix' => 'admin'],function(){
   // Route::get('/', ['as' => 'admin.index', 'uses' => '\Whole\Core\Http\Controllers\Admin\IndexController@index']);

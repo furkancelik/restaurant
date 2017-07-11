@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gusto</title>
+<title>{{$configs->menu_title}}</title>
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Favicons
     ================================================== -->
@@ -62,8 +63,8 @@
       <div class="container">
         <div class="row">
           <div class="intro-text">
-            <h1>Gusto</h1>
-            <p>Reservations: (887) 654-3210</p>
+            <h1>{{$configs->menu_title}}</h1>
+            <p>Rezervasyon: {{$configs->menu_phone}}</p>
           </div>
         </div>
       </div>
@@ -74,7 +75,7 @@
 <div id="features" class="text-center">
   <div class="container">
     <div class="section-title">
-      <h2>Our Specials</h2>
+      <h2>Özel Spesiyaller</h2>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-4">
@@ -109,10 +110,9 @@
       <div class="col-xs-12 col-md-3 col-md-offset-1">
         <div class="about-text">
           <div class="section-title">
-            <h2>Our Story</h2>
+            <h2>Hakkımızda</h2>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare.</p>
+          {{$configs->about_page}}
         </div>
       </div>
     </div>
@@ -122,60 +122,28 @@
 <div id="restaurant-menu">
   <div class="container">
     <div class="section-title text-center">
-      <h2>Menu</h2>
+      <h2>Menuler</h2>
     </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">Breakfast & Starters</h2>
-          <div class="menu-item">
-            <div class="menu-item-name">Tortellini Skewers</div>
-            <div class="menu-item-price"> $9 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
+
+    @foreach($menus as $i=>$menu)
+    @if($i%2==1)<div class="row">@endif
+          <div class="col-xs-12 col-sm-6">
+            <div class="menu-section">
+              <h2 class="menu-section-title">{{$menu->title}}</h2>
+              @foreach($menu->details as $detail)
+                <div class="menu-item">
+                  <div class="menu-item-name">{{$detail->title}}</div>
+                  <div class="menu-item-price">₺ {{$detail->price}} </div>
+                  <div class="menu-item-description">{{$detail->content}}</div>
+                  <a data-id="{{$detail->id}}" data-content="{{$detail->content}}" data-title="{{$detail->title}}" data-price="{{$detail->price}}" href="#siparisver" style="margin-top:15px;" class="addToCart page-scroll btn btn-danger btn-sm pull-left">Sipariş Ver</a>
+                </div>
+                <div class="clearfix"></div>
+              @endforeach
+            </div>
           </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Fried Ravioli</div>
-            <div class="menu-item-price"> $7 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Wild Mushroom Arancini</div>
-            <div class="menu-item-price"> $9 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Mozzarella Sticks</div>
-            <div class="menu-item-price"> $10 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">Main Course</h2>
-          <div class="menu-item">
-            <div class="menu-item-name">Roast Stuffed Chicken</div>
-            <div class="menu-item-price"> $18 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Chicken & Mushroom Pasta</div>
-            <div class="menu-item-price"> $20 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Beef Lasagne</div>
-            <div class="menu-item-price"> $14 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Chicken Goujons</div>
-            <div class="menu-item-price"> $19 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      @if($i%2==1)</div>@endif
+    @endforeach
+
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="menu-section">
@@ -256,10 +224,9 @@
       <div class="col-md-6">
         <div class="col-md-10 col-md-offset-1">
           <div class="section-title">
-            <h2>Meet Our Chef</h2>
+            <h2>ŞEF</h2>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare.</p>
+          {{$configs->chef_page}}
         </div>
       </div>
       <div class="col-md-6">
@@ -272,53 +239,63 @@
 <div id="contact" class="text-center">
   <div class="container text-center">
     <div class="col-md-4">
-      <h3>Reservations</h3>
+      <h3>Rezervasyon</h3>
       <div class="contact-item">
-        <p>Please call</p>
-        <p>(887) 654-3210</p>
+        <p>Bizi Arayın</p>
+        <p>{{$configs->reservation_phone}}</p>
       </div>
     </div>
     <div class="col-md-4">
-      <h3>Address</h3>
+      <h3>Adresimiz</h3>
       <div class="contact-item">
-        <p>4321 California St,</p>
-        <p>San Francisco, CA 12345</p>
+        {{$configs->address}}
       </div>
     </div>
     <div class="col-md-4">
-      <h3>Opening Hours</h3>
+      <h3>Çalışma Saatlerimiz</h3>
       <div class="contact-item">
-        <p>Mon-Thurs: 10:00 AM - 11:00 PM</p>
-        <p>Fri-Sun: 11:00 AM - 02:00 AM</p>
+         {{$configs->working_hours}}
       </div>
     </div>
   </div>
   <div class="container">
     <div class="section-title text-center">
-      <h3>Send us a message</h3>
+      <h3 id="siparisver">SİPARİŞ VER</h3>
     </div>
     <div class="col-md-8 col-md-offset-2">
-      <form name="sentMessage" id="contactForm" novalidate>
+      @include('flash::message')
+      <form action="/siparis-ver" method="post">
+         {{ csrf_field() }}
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" id="name" class="form-control" placeholder="Name" required="required">
-              <p class="help-block text-danger"></p>
+              <input type="hidden" name="menu_id">
+              <input value="{{ old('menu_title') }}" type="text" name="menu_title" placeholder="Bir Menü Seçiniz" class="form-control" disabled>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="email" id="email" class="form-control" placeholder="Email" required="required">
-              <p class="help-block text-danger"></p>
+              <input value="{{ old('menu_price') }}" type="text" name="menu_price" placeholder="Bir Menü Seçiniz" class="form-control" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input value="{{ old('full_name') }}" type="text" name="full_name" class="form-control" placeholder="Adınız Soyadınız" required="required">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input value="{{ old('phone') }}" type="text" name="phone" class="form-control" placeholder="Telefon Numaranız" required="required">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+          <textarea name="address" class="form-control" rows="4" placeholder="Adresiniz" required="required">{{ old('address') }}</textarea>
           <p class="help-block text-danger"></p>
         </div>
-        <div id="success"></div>
-        <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+        <button type="submit" class="btn btn-custom btn-lg">Sipariş Ver</button>
       </form>
     </div>
   </div>
@@ -326,14 +303,14 @@
 <div id="footer">
   <div class="container text-center">
     <div class="col-md-6">
-      <p>&copy; 2017 Gusto. All rights reserved. Design by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
+      {{$configs->copyright}}
     </div>
     <div class="col-md-6">
       <div class="social">
         <ul>
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          <li><a target="_blank" href="{{$configs->facebook}}"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="{{$configs->twitter}}"><i class="fa fa-twitter"></i></a></li>
+          <li><a target="_blank" href="{{$configs->youtube}}"><i class="fa fa-youtube"></i></a></li>
         </ul>
       </div>
     </div>
@@ -342,8 +319,6 @@
 <script type="text/javascript" src="assets/frontend/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="assets/frontend/js/bootstrap.js"></script>
 <script type="text/javascript" src="assets/frontend/js/SmoothScroll.js"></script>
-<script type="text/javascript" src="assets/frontend/js/jqBootstrapValidation.js"></script>
-<script type="text/javascript" src="assets/frontend/js/contact_me.js"></script>
 <script type="text/javascript" src="assets/frontend/js/main.js"></script>
 </body>
 </html>
