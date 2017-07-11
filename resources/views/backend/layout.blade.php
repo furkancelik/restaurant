@@ -60,6 +60,10 @@
                           <a href="{{ route('admin.menu-category.index') }}"><i class="fa fa-list-alt fa-fw"></i> Menü Kategorileri</a>
                       </li>
 
+                      <li>
+                          <a href="{{ route('admin.menu-detail.index') }}"><i class="fa fa-file-o fa-fw"></i> Menü Detayları</a>
+                      </li>
+
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -193,6 +197,7 @@
             responsive: true
         });
         $(".dataTables_filter").addClass('pull-right');
+        $(".dataTables_paginate").addClass('pull-right');
 
         $("a[data-method='delete']").click(function(){
            var d = confirm("Silmek İstediğinize Eminmisiniz?");
