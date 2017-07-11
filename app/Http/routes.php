@@ -23,5 +23,8 @@ Route::group(['prefix' => 'admin'],function(){
       return view('backend/index/index');
   }]);
   Route::resource('/config', 'Admin\ConfigController');
+  Route::resource('/menu-category', 'Admin\MenuCategoryController');
+
+
   // Route::get('/config', ['as' => 'admin.config', 'uses' => 'Admin\ConfigController']);
 });

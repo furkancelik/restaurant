@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="/admin" />
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Restaurant Admin Paneli</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/backend/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,6 +54,10 @@
                       </li>
                       <li>
                           <a href="{{ route('admin.config.index') }}"><i class="fa fa-cogs fa-fw"></i> Ayarlar</a>
+                      </li>
+
+                      <li>
+                          <a href="{{ route('admin.menu-category.index') }}"><i class="fa fa-list-alt fa-fw"></i> Menü Kategorileri</a>
                       </li>
 
                         <li>
@@ -173,13 +178,55 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="assets/backend/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="assets/backend/vendor/raphael/raphael.min.js"></script>
-    <script src="assets/backend/vendor/morrisjs/morris.min.js"></script>
-    <script src="assets/backend/data/morris-data.js"></script>
+
+    <script src="assets/backend/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="assets/backend/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="assets/backend/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/backend/dist/js/sb-admin-2.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+        $(".dataTables_filter").addClass('pull-right');
+
+        $("a[data-method='delete']").click(function(){
+           var d = confirm("Silmek İstediğinize Eminmisiniz?");
+           if (d == false) {
+               return false;
+           }
+           method($(this).attr("href"), {_method: 'DELETE',_token: $('meta[name="csrf-token"]').attr('content') });
+           return false;
+       });
+    });
+    function method(path, params, method) {
+        method = method || "post"; // Set method to post by default if not specified.
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+    </script>
 
 </body>
 
