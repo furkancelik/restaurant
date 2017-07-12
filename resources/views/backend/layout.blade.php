@@ -73,7 +73,7 @@
                       </li>
 
                       <li>
-                          <a href="{{ route('admin.index') }}"><i class="fa fa-power-off fa-fw"></i> Çıkış Yap</a>
+                          <a href="{{ route('admin.logout') }}"><i class="fa fa-power-off fa-fw"></i> Çıkış Yap</a>
                       </li>
                     </ul>
                 </div>
