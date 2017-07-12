@@ -52,7 +52,7 @@
                                     <input class="form-control" placeholder="Şifreniz" name="password" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Giriş Yap</button>
                             </fieldset>
                         </form>
                     </div>
