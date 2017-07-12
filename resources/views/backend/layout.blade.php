@@ -42,7 +42,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">Restoran Admin Paneli</a>
+                <a class="navbar-brand" href="{{route('admin.index')}}">Restoran Admin Paneli</a>
             </div>
             <!-- /.navbar-header -->
 
