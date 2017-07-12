@@ -69,6 +69,10 @@
                       </li>
 
                       <li>
+                          <a href="{{ route('admin.user.index') }}"><i class="fa fa-users fa-fw"></i> Yöneticiler</a>
+                      </li>
+
+                      <li>
                           <a href="{{ route('admin.index') }}"><i class="fa fa-power-off fa-fw"></i> Çıkış Yap</a>
                       </li>
                     </ul>

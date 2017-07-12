@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin'],function(){
 
   Route::resource('/order', 'Admin\OrderController');
 
+  Route::resource('/user', 'Admin\UserController');
+
 
   // Route::get('/config', ['as' => 'admin.config', 'uses' => 'Admin\ConfigController']);
 });
