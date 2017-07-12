@@ -143,59 +143,6 @@
           </div>
       @if($i%2==1)</div>@endif
     @endforeach
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">Dinner</h2>
-          <div class="menu-item">
-            <div class="menu-item-name">Sesame-Ginger Beef</div>
-            <div class="menu-item-price"> $15 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Crispy Fried Chicken</div>
-            <div class="menu-item-price"> $17 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Mongolian Shrimp & Broccoli</div>
-            <div class="menu-item-price"> $18 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam.. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Spicy Coconut Salmon</div>
-            <div class="menu-item-price"> $20 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">Desserts</h2>
-          <div class="menu-item">
-            <div class="menu-item-name">Chocolate Mud Cake</div>
-            <div class="menu-item-price"> $11 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Bourbon-Pecan Tart</div>
-            <div class="menu-item-price"> $14 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Texas Sheet Cake</div>
-            <div class="menu-item-price"> $15 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Vanilla Cheesecake</div>
-            <div class="menu-item-price"> $18 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 <!-- Gallery Section -->
